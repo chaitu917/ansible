@@ -1,0 +1,13 @@
+---
+- name: implemnting when cinditions
+  hosts: all
+  vars: 
+    - a: 10
+  tasks:
+    - name: download jenkins.war
+      get_url:
+        url: https://get.jenkins.io/war-stable/2.452.3/jenkins.war
+        dest: /tmp
+      when: a == 20
+
+
