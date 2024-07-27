@@ -1,0 +1,38 @@
+---
+- name: configure apache2 on ubuntu servers and httpd on RHEL servers
+  hosts: all
+  tasks:
+    - name: install apache2 on ubuntu servers
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    - name: install httpd on RHEL servers
+      yum:
+        name: httpd
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "RedHat"
+    - name: edit the index.html file
+      copy:
+        content: "this is robo"
+        dest: /var/www/html/index.html
+    - name: restart apache2 on the ubuntu servers
+      service:
+        name: apache2
+        state: restarted
+      when: ansible_distribution == "Ubuntu"
+    - name: restart httpd on RHEL serverers
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_distribution == "RedHat"
+    - name: check response on apache2/httpd servers
+      uri:
+       url: "{{item}}"
+      with_items:
+         - http://172.31.55.27
+         - http://172.31.50.137
+         - http://172.31.0.4
+         - http://172.31.33.65

@@ -1,0 +1,6 @@
+---
+- name: edit the index.html file
+  copy:
+      content: "intelliq"
+      dest: /vatr/www/html/index.html
+...        
