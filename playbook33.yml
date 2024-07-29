@@ -1,0 +1,12 @@
+---
+- name: cone git repo
+  hosts: all
+  tasks: 
+    - name: clone git
+      git:
+        repo: https://github.com/intelliqittrainings/Kubernetescode.git
+        dest: /tmp/mygit
+    
+     
+
+
