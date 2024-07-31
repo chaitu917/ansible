@@ -1,0 +1,15 @@
+---
+- name: download multiple docker images
+  hosts: all
+  tasks:
+    - name: download images from dockerhub
+      docker_image: 
+         name: "{{item}}"
+         source: pull
+      with_items:
+        - nginx
+        - ghost
+        - tomcat
+        - httpd
+
+

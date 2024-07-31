@@ -1,6 +1,7 @@
 ---
 - name: create dirs and files on all servers
   hosts: all
+  become: yes
   tasks:
     - name: create dir1 in the /tmp folder
       file:

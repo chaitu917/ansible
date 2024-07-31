@@ -9,7 +9,7 @@
         update_cache: "{{item.c}}"
       with_items:
         - {a: tomcat10,b: present,c: yes}
-        - {a: tomcat10-admin,b: present,c: no}
+        - {a: tomcat10-admin,b: present,c: yes}
     - name: copy tomcat-users.xml file
       copy: 
         src: tomcat.users.xml 
