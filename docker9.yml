@@ -1,0 +1,4 @@
+---
+- name: create workers for the swarm
+  hosts: workers
+  tasks: 
